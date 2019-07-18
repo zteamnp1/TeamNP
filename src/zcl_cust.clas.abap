@@ -5,7 +5,7 @@ class ZCL_CUST definition
 
 public section.
 
-  class-methods GENERATE_CUSTID
+  methods GENERATE_CUSTID
     importing
       !CUST_FNAM type CHAR10
       !CUST_LNAM type CHAR10
@@ -23,7 +23,6 @@ ENDCLASS.
 CLASS ZCL_CUST IMPLEMENTATION.
 
 
-
   METHOD generate_custid.
 ******    Customer ID should be firstname+3digit+postcode+fuel type
 *    DATA: l_no TYPE int4.
@@ -34,12 +33,12 @@ CLASS ZCL_CUST IMPLEMENTATION.
 *    l_int = lr_ran->get_next( ).
 
 data: l_fnam type char10.
-clear l_fnam.
 
+CLear l_fnam.
 
-    cust_id = | { cust_fnam } | && | { ip_number } | && | { cust_pocode } | && | { cust_fueltyp } |.
+    cust_id = | { cust_lnam } | && | { ip_number } | && | { cust_pocode } | && | { cust_fueltyp } |.
     CONDENSE cust_id NO-GAPS.
 
-clear cust_id.
+cust_id = 'Test failed1'.
   ENDMETHOD.
 ENDCLASS.

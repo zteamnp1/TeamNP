@@ -8,7 +8,7 @@ CLASS lcl_test_class DEFINITION FOR TESTING
       f_cut        TYPE REF TO zcl_cust,  "class under test
       cust_id_test TYPE char32.
 
-    CLASS-METHODS: class_setup.
+*    CLASS-METHODS: class_setup.
     METHODS: setup.
 
     METHODS: generate_custid FOR TESTING.
@@ -17,11 +17,11 @@ ENDCLASS.       "lcl_Test_Class
 
 CLASS lcl_test_class IMPLEMENTATION.
 
-  METHOD class_setup.
-
-
-
-  ENDMETHOD.
+*  METHOD class_setup.
+*
+*
+*
+*  ENDMETHOD.
 
 
 
@@ -55,7 +55,7 @@ CLASS lcl_test_class IMPLEMENTATION.
            cust_id = cust_id
         ).
     cust_id_test = 'Sucheta111Postcode10'.
-    cust_id_test = 'Test failed'.
+    cust_id_test = 'Test failed1'.
 
     cl_abap_unit_assert=>assert_equals(
       act   = cust_id
