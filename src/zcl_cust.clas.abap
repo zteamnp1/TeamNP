@@ -23,6 +23,7 @@ ENDCLASS.
 CLASS ZCL_CUST IMPLEMENTATION.
 
 
+
   METHOD generate_custid.
 ******    Customer ID should be firstname+3digit+postcode+fuel type
 *    DATA: l_no TYPE int4.
@@ -32,7 +33,13 @@ CLASS ZCL_CUST IMPLEMENTATION.
 *    lr_ran = cl_abap_random_int=>create( min = 1 max = 999 ).
 *    l_int = lr_ran->get_next( ).
 
+data: l_fnam type char10.
+clear l_fnam.
+
+
     cust_id = | { cust_fnam } | && | { ip_number } | && | { cust_pocode } | && | { cust_fueltyp } |.
     CONDENSE cust_id NO-GAPS.
+
+clear cust_id.
   ENDMETHOD.
 ENDCLASS.

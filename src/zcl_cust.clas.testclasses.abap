@@ -34,9 +34,6 @@ CLASS lcl_test_class IMPLEMENTATION.
   ENDMETHOD.
 
 
-
-
-
   METHOD generate_custid.
 
     DATA cust_fnam TYPE char10 VALUE 'Sucheta'.
@@ -58,30 +55,31 @@ CLASS lcl_test_class IMPLEMENTATION.
            cust_id = cust_id
         ).
     cust_id_test = 'Sucheta111Postcode10'.
+    cust_id_test = 'Test failed'.
 
     cl_abap_unit_assert=>assert_equals(
       act   = cust_id
       exp   = cust_id_test          "<--- please adapt expected value
-     msg   = 'Testing value cust_Id'
+     msg   = 'Testing value cust_Id failed'
      level = level
     ).
-*    f_cut->generate_custid(
-*      EXPORTING
-*        cust_fnam = cust_fnam
-*        cust_lnam = cust_lnam
-*        cust_pocode = cust_pocode
-*        cust_fueltyp = cust_fueltyp
-*        ip_number = 1
-*     IMPORTING
-*       cust_id = cust_id
-*    ).
-*    cust_id_test = 'Sucheta001Postcode10'.
-*
-*    cl_abap_unit_assert=>assert_equals(
-*      act   = cust_id
-*      exp   = cust_id_test          "<--- please adapt expected value
-*     msg   = 'Testing value cust_Id'
-*     level = level ).
+    f_cut->generate_custid(
+      EXPORTING
+        cust_fnam = cust_fnam
+        cust_lnam = cust_lnam
+        cust_pocode = cust_pocode
+        cust_fueltyp = cust_fueltyp
+        ip_number = 1
+     IMPORTING
+       cust_id = cust_id
+    ).
+    cust_id_test = 'Sucheta001Postcode10'.
+
+    cl_abap_unit_assert=>assert_equals(
+      act   = cust_id
+      exp   = cust_id_test          "<--- please adapt expected value
+     msg   = 'Testing value cust_Id failed'
+     level = level ).
 
     CLEAR cust_fnam.
     f_cut->generate_custid(
@@ -99,7 +97,7 @@ CLASS lcl_test_class IMPLEMENTATION.
     cl_abap_unit_assert=>assert_equals(
       act   = cust_id
       exp   = cust_id_test          "<--- please adapt expected value
-     msg   = 'Testing value cust_Id'
+     msg   = 'Testing value cust_Id failed'
      level = level
     ).
   ENDMETHOD.
